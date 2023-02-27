@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>My litte App</title>
+    
+        </head>
+
+    <body>
+
+    <h1> Hi Uwu</h1>
+    <p>Welcome to my first Flask webiste</p>
+    <p>This variable is from python: {{my_variable}}</p>
+    <p> My favorite fruits are : {{list}}</p>
+
+    <ul>
+        {% for fruits in list%}
+        <li>{{fruits}}</li>
+        {% endfor%}
+    </ul>
+
+    {% if user == 'admin' %}
+    <p>The One Piece IS REAL</p>
+    <button>Ban One Piece</button>
+    {% endif %}
+
+    </body>
+
+</html>
