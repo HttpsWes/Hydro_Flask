@@ -18,6 +18,6 @@ def index():
 def ping():
     return "<p>pong</p>"
 
-@app.route("/hello/<Wesley>")
+@app.route("/hello/<name>")
 def hello(name):
     return f"<p> Hello, {name}! </p>"
