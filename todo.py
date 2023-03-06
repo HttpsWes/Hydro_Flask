@@ -18,4 +18,30 @@ def add():
     bucketlist.append(new_todo)
     return redirect(('/todo'))
 
+
+
+import pymysql
+import pymysql.cursors
+
+
+connection = pymysql.connect(
+    host = "10.100.33.60",
+    user = "wihezuo",
+    password = "225380047",
+    database= "wihezuo_",
+    cursorclass=pymysql.cursors.DictCursor,
+    autocommit = True
+)
+
+cursor = connection.cursor()
+
+cursor.execute("SELECT * FROM `Todos` ")
+
+result = cursor.fetchall()
+
+print(result)
+
+ 
+
+
     
