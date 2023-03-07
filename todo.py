@@ -7,13 +7,18 @@ bucketlist= ["skydiving","Ear-piercings"]
 
 @app.route("/todo")
 def index():
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM `Todos`")
+
+    results = cursor.fetchall()
+
     return render_template(
         "todo.html.jinja",
-        bucketlist=bucketlist
+        bucketlist=results
     )
 @app.route("/add", methods=['POST'])
 def add():
-    new_todo= request.form['new_todo']
+    cursor.execute(f"INSERT INTO `Todo`(`Description`) VALUES ('{Todos}') ")
 
     bucketlist.append(new_todo)
     return redirect(('/todo'))
