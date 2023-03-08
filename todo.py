@@ -18,7 +18,10 @@ def index():
     )
 @app.route("/add", methods=['POST'])
 def add():
-    cursor.execute(f"INSERT INTO `Todo`(`Description`) VALUES ('{Todos}') ")
+    
+    new_todo= request.form['new_todo']
+
+    cursor.execute(f"INSERT INTO `Todos`(`Description`) VALUES ('{new_todo}') ")
 
     bucketlist.append(new_todo)
     return redirect(('/todo'))
