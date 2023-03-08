@@ -9,7 +9,7 @@ bucketlist= ["skydiving","Ear-piercings"]
 def index():
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM `Todos`")
-
+    cursor.execute("SELECT * FROM `Todos` ORDER BY `Complete`")
     results = cursor.fetchall()
 
     return render_template(
@@ -22,6 +22,7 @@ def add():
     new_todo= request.form['new_todo']
 
     cursor.execute(f"INSERT INTO `Todos`(`Description`) VALUES ('{new_todo}') ")
+    
 
     bucketlist.append(new_todo)
     return redirect(('/todo'))
