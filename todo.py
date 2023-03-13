@@ -18,6 +18,7 @@ def index():
     )
 @app.route("/add", methods=['POST'])
 def add():
+    cursor = connection.cursor()
     
     new_todo= request.form['new_todo']
 
@@ -27,6 +28,16 @@ def add():
     bucketlist.append(new_todo)
     return redirect(('/todo'))
 
+@app.route("/complete", methods = ['POST'])
+def complete():
+
+    todo_id = request.form ['todo_id']
+
+    cursor = connection.cursor()
+    
+    cursor.execute(f"UPDATE `Todos` SET `Complete` = 1 WHERE `id` = {todo_id}" )
+
+    return redirect("/")
 
 
 import pymysql
@@ -41,15 +52,6 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor,
     autocommit = True
 )
-
-cursor = connection.cursor()
-
-cursor.execute("SELECT * FROM `Todos` ")
-
-result = cursor.fetchall()
-
-print(result)
-
  
 
 

@@ -11,18 +11,45 @@
 </head>
 <html>
 <div >
-<body class= "p-3 mb-2 bg-dark-subtle text-emphasis-dark" >
+<body class= "p-3 mb-2 bg-dark text-white" >
+<div>
+<style>
+div 
+        input[type="checkbox"]::before {
+        
+
+        transform-origin: bottom left;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+</style>
 <div class=font-monospace>
  <h1 class ="text-center" >Hello,  &#128516 </h1>
 <h2 class ="text-center">This is my end of year bucketlist</h2>
+<hr>
+<br>
+<br>
+<br>
+<br>
+
+<div style="height: 300px; background-color: #780d18 ;"  class="border border-dark">
     <p class="text-body"> I want to complete these goals by: {{my_variable}}</p>
     <p class="text-body"> Things i would like to do before this year are : </p>
 
     <ul class="text-body">
         {% for item in bucketlist%}
-        <li style="{% if item['Complete'] == 1 %}  color: yellow; text-decoration: line-through; {%endif%}">{{item['Description']}}</li>
+        <li style="{% if item['Complete'] == 1 %}  color: yellow; text-decoration: line-through; {%endif%}">
+        
+        <form action = "/complete" method = "post">
+        <input name="todo_id" value="{{item['id']}}" hidden>
+        <input type="submit" value="Complete">
+        </form>
+        
+        {{item['Description']}}
+        
+        </li>
         {% endfor%}
     </ul>
+</div>
 </div>
 <form
 
@@ -36,7 +63,7 @@
     <input type ="submit" class="btn btn-primary  ">
     </p>
 
-
+<div ></div>
 </form>
 </body>
 </div>
