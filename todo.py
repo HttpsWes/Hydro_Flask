@@ -28,7 +28,8 @@ def index():
 
     return render_template(
         "todo.html.jinja",
-        bucketlist=results
+        bucketlist=results,
+        my_variable="2023"
     )
 @app.route("/add", methods=['POST'])
 @auth.login_required
