@@ -45,7 +45,9 @@
         {%if item ['Complete'] ==0 %}
         <form action = "/complete" method = "post">
         <input name="todo_id" value="{{item['ID']}}" hidden>
-        <input type="submit" value="Complete">
+        
+        <input type="submit" value="Complete" class="btn btn-primary border border-2 border border-dark w-3 p-10" style="height: 35px;">
+        
         </form>
         {% endif%}
         {{item['Description']}}
